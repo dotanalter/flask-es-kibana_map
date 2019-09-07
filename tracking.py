@@ -5,7 +5,7 @@
 from flask import Flask, jsonify, request
 from elasticsearch import Elasticsearch
 
-es = Elasticsearch()
+es = Elasticsearch(['elasticsearch'])
 app = Flask(__name__)
 
 @app.route('/tracking', methods=['GET'])
@@ -40,5 +40,3 @@ def invaild_url(e):
 def invaild_url(e):
         return("Please enter vaild URL with /tracking route")
 
-if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0')

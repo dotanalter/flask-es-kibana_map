@@ -20,16 +20,25 @@ services:
       - esdata1:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+      - 9300:9300
+    networks:
+      - elk
+  
 
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.3.1
-    container_name: kibana
+  flask:
+    build: .
+    container_name: flask
     environment:
-      ELASTICSEARCH_URL: "http://elasticsearch:9200"
+      ELASTICSEARCH: "http://elasticsearch:9200"
     ports:
-      - 5601:5601
+      - 5000:5000
+    networks: 
+      - elk  
     depends_on:
       - elasticsearch
+
+networks:
+  elk:
 
 volumes:
   esdata1:
