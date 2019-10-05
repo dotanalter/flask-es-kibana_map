@@ -29,10 +29,10 @@ def sendJSONtoES():
 		price = int(price)
 	except:
 		return "price parameter should be an integer"
-	requests.put('http://localhost:9200/tracking')
+	requests.put('http://elasticsearch:9200/tracking')
 	headers = {'Content-Type': 'application/json'}
 	data = '\n{\n  "properties": {\n        "location": {\n          "type": "geo_point"\n        }\n      }\n   }'
-	requests.put('http://localhost:9200/tracking/_mapping',headers=headers, data=data)
+	requests.put('http://elasticsearch:9200/tracking/_mapping',headers=headers, data=data)
 	g = geocoder.ip(ip)
 	location = g.latlng
 	if not location:
