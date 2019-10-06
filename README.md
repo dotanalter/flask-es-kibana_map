@@ -1,4 +1,4 @@
-# FLASK APP - DIRECTEAM
+# FLASK APP
 This is a Flask app that contacts with elasticsearch index and saves user location to kibana map
 
 # HOW TO USE:
